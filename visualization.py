@@ -25,16 +25,15 @@ class Visualization:
         self.iterator += 1
 
     def show(self, coords, scaled=True):
-        fig = plt.figure()
-        ax = fig.add_subplot(111, projection='3d')
+        plt.cla()
         if scaled:
-            ax.set_xlim(self.x_lim)
-            ax.set_ylim(self.y_lim)
-            ax.set_zlim(self.z_lim)
+            self.ax.set_xlim(self.x_lim)
+            self.ax.set_ylim(self.y_lim)
+            self.ax.set_zlim(self.z_lim)
 
-        ax.set_xlabel('X Label')
-        ax.set_ylabel('Y Label')
-        ax.set_zlabel('Z Label')
+        self.ax.set_xlabel('X Label')
+        self.ax.set_ylabel('Y Label')
+        self.ax.set_zlabel('Z Label')
 
         iterator = 0
         for n in coords:
@@ -42,6 +41,6 @@ class Visualization:
                 xs = [coord[0] for coord in n]
                 ys = [coord[1] for coord in n]
                 zs = [coord[2] for coord in n]
-                ax.scatter(xs, ys, zs)
+                self.ax.scatter(xs, ys, zs)
             iterator += 1
         plt.show()

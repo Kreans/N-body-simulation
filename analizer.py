@@ -3,13 +3,14 @@ import numpy as np
 
 def calculate_velocity(coords, d_time):
     d_x = calculate_d_x(coords)
-    d_v = d_x / d_time
-    return d_v
+    velocity = d_x / d_time
+    return velocity
 
 
 def calculate_acceleration(coords, d_time):
-    d_x = calculate_d_x(coords)
-    d_a = d_x / (d_time ** 2)
+    v = calculate_velocity(coords, d_time)
+    d_v = np.diff(v)
+    d_a = d_v / (d_time)
     return d_a
 
 

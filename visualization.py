@@ -81,7 +81,7 @@ class Visualization:
         fig, axs = plt.subplots(len(points_indexes))
         fig.suptitle(title)
         counter = 0
-        x = np.array(range(0, len(coords) - 1))
+        x = np.array(range(0, data.shape[1]))
         for point_index in points_indexes:
             y = data[point_index]
             axs[counter].plot(x, y)

@@ -60,18 +60,16 @@ class Visualization:
         self.draw_many_plots(coords, d_a, "acceleration", points_indexes)
 
     def show_energies(self, coords, mass):
-        xx, y, z = calculate_energies(coords, self.d_t, mass)
-
+        kinetic_energy, potential_energy, total_energy = calculate_energies(coords, self.d_t, mass)
         x = np.array(range(0, len(coords) - 1))
 
-        plt.plot(x, xx)
-        plt.plot(x, y)
-        plt.plot(x, z)
-        plt.title('title')
-        plt.ylabel('ylabel')
-        plt.xlabel('xlabel')
+        plt.plot(x, kinetic_energy, label="Kinetic energy")
+        plt.plot(x, potential_energy, label="Potential energy")
+        plt.plot(x, total_energy, label="Total energy")
+        plt.title('Energies')
+        plt.ylabel('Energy')
+        plt.xlabel('epoch')
         plt.legend()
-        plt.show()
         plt.show()
 
     def draw_many_plots(self, coords, data, title, points_indexes=None):

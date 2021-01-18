@@ -10,7 +10,7 @@ def calculate_velocity(coords, d_time):
 def calculate_acceleration(coords, d_time):
     v = calculate_velocity(coords, d_time)
     d_v = np.diff(v)
-    d_a = d_v / (d_time)
+    d_a = d_v / d_time
     return d_a
 
 
@@ -34,10 +34,6 @@ def calculate_energies(coords, d_time, m):
     velocity = calculate_velocity(coords, d_time)
     kinetic_energy = np.zeros((epochs, 1))
     potential_energy = np.zeros((epochs, 1))
-
-    print(epochs)
-    print(kinetic_energy)
-    print(kinetic_energy.shape)
 
     for i in range(epochs):
         kinetic_energy[i] = 1 / 2 * np.sum((velocity[:, i] ** 2 * m))
